@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    environment {
+        name = "satish"
+    }
+
+    stages {
+        stage('Run A command') {
+            steps {
+                sh '''
+                ls 
+                pwd
+                date
+                '''
+                
+                
+            }
+        }
+        stage('Environment') {
+            steps {
+               sh 'echo "${BUILD_ID}"'
+               sh 'echo "${name}"'
+            }
+        }
+        stage('deploy') {
+            steps {
+                echo 'Hello deploy'
+            }
+        }
+    }
+}
